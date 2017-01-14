@@ -9,6 +9,3 @@ go:
 before_install:
   - go get github.com/Shopify/sarama
   - go get github.com/samuel/go-zookeeper/zk
-
-script:
-  - go build
