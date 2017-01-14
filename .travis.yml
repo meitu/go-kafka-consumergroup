@@ -1,6 +1,5 @@
 language: go
 dist: trusty
-go_import_path: github.com/arthurkiller/perfM
 sudo: false
 
 go:
