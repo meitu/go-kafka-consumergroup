@@ -12,4 +12,4 @@ before_install:
 
 install:
   - go get -t -v  github.com/meitu/go-consumergroup
-  - go test -run SKIP
+  - go test -v -run SKIP
