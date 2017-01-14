@@ -4,13 +4,10 @@ go_import_path: github.com/arthurkiller/perfM
 sudo: false
 
 go:
-  - 1.5
   - 1.6
   - 1.7.3
 
 env:
-  global:
-   - GO15VENDOREXPERIMENT=1
   matrix:
    - TARGET=amd64
    - TARGET=arm64
@@ -20,8 +17,8 @@ env:
    - TARGET=x64
 
 before_install:
-   - go get -v github.com/Shopify/sarama
-   - go get -v github.com/samuel/go-zookeeper/zk
+   - go get github.com/Shopify/sarama
+   - go get github.com/samuel/go-zookeeper/zk
 
 matrix:
   fast_finish: true
@@ -34,6 +31,10 @@ matrix:
     env: TARGET=arm64
   - go: tip
     env: TARGET=386
+  - go: tip
+    env: TARGET=x86
+  - go: tip
+    env: TARGET=x64
 
 script:
     - go build ./consumergroup/.
