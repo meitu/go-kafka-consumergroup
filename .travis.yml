@@ -34,6 +34,4 @@ matrix:
     env: TARGET=386
 
 script:
- - go build ./consumergroup
- - go vet ./consumergroup
- - golint ./consumergroup
+ - go build ./consumergroup/.
