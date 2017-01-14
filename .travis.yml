@@ -11,5 +11,4 @@ before_install:
   - go get github.com/samuel/go-zookeeper/zk
 
 install:
-  - go get -t -v  github.com/meitu/go-consumergroup
-  - go test -v -run SKIP
+  - make build
