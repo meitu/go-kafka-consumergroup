@@ -11,5 +11,8 @@ before_install:
    - go get github.com/Shopify/sarama
    - go get github.com/samuel/go-zookeeper/zk
 
+install:
+   - go get -t -v ./consumergroup/
+
 script:
     - go build ./consumergroup/.
