@@ -4,6 +4,7 @@ go_import_path: github.com/arthurkiller/perfM
 sudo: false
 
 go:
+  - 1.5
   - 1.6
   - 1.7.3
 
@@ -18,8 +19,9 @@ env:
    - TARGET=x86
    - TARGET=x64
 
-install:
-    go get -u github.com/golang/lint/golint
+before_install:
+   - go get -v github.com/Shopify/sarama
+   - go get -v github.com/samuel/go-zookeeper/zk
 
 matrix:
   fast_finish: true
@@ -34,4 +36,4 @@ matrix:
     env: TARGET=386
 
 script:
- - go build ./consumergroup/.
+    - go build ./consumergroup/.
