@@ -2,11 +2,12 @@ package main
 
 import (
 	"fmt"
-	consumergroup "go-consumergroup"
 	"os"
 	"os/signal"
 	"syscall"
 	"time"
+
+	consumergroup "github.com/meitu/go-consumergroup"
 )
 
 func handleSignal(sig os.Signal, cg *consumergroup.ConsumerGroup) {
@@ -52,6 +53,16 @@ func main() {
 		fmt.Println("Failed to join group, err ", err.Error())
 		os.Exit(1)
 	}
+
+	// Retrieve the error and log
+	go func() {
+		if topicErrChan, ok := cg.GetErrors("test"); ok {
+			for err := range topicErrChan {
+				fmt.Println("toipic %s got err, %s", err)
+			}
+		}
+	}()
+
 	if messages, ok := cg.GetMessages("test"); ok {
 		for message := range messages {
 			fmt.Println(string(message.Value), message.Offset)
